@@ -1,0 +1,252 @@
+/* ============================================
+   place-style.css
+   Shared styles for all place pages:
+   mathura, vrindavan, barsana, gokul,
+   nandgaon, govardhan
+   ============================================ */
+
+/* ---- Google Fonts are loaded in each HTML file ---- */
+
+/* ---- CSS Variables (change colours here easily) ---- */
+:root {
+  --saffron: #e07820;
+  --saffron-dark: #b85e10;
+  --saffron-light: #fff3e0;
+  --cream: #fdf8f0;
+  --text-dark: #2c1a0e;
+  --text-mid: #5a3e28;
+  --text-light: #9a7a60;
+  --card-border: #f0dfc8;
+  --white: #ffffff;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.14);
+}
+
+/* ---- Reset ---- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  background-color: var(--cream);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+/* ============================================
+   NAVIGATION BAR
+   ============================================ */
+.navbar {
+  background-color: var(--white);
+  border-bottom: 1px solid var(--card-border);
+  padding: 14px 40px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.back-btn {
+    top: 20px;
+    left: 20px;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.85);
+    color: #333;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 14px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+}
+.back-btn:hover {
+    background: #fff;
+    transform: translateY(-2px);
+}
+
+.navbar-title {
+  color: var(--text-light);
+  font-size: 0.85rem;
+  font-family: 'Lato', sans-serif;
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.hero {
+  background: linear-gradient(135deg, #3d1a00 0%, #7a3800 50%, #3d1a00 100%);
+  text-align: center;
+  padding: 70px 24px 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle dot pattern overlay — pure CSS, very simple */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.hero-content {
+  position: relative; /* sits above the ::before pattern */
+}
+
+.hero-emoji {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  color: #fff8e8;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.hero p {
+  font-size: 1rem;
+  color: rgba(255, 248, 232, 0.7);
+  font-style: italic;
+  letter-spacing: 0.5px;
+}
+
+/* ============================================
+   PAGE WRAPPER
+   ============================================ */
+.page-wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 40px 24px 60px;
+}
+
+/* ============================================
+   INTRO BOX
+   ============================================ */
+.intro-box {
+  background-color: var(--white);
+  border-radius: 10px;
+  padding: 22px 26px;
+  margin-bottom: 36px;
+  box-shadow: var(--shadow);
+}
+
+.intro-box p {
+  font-size: 1rem;
+  color: var(--text-mid);
+  line-height: 1.8;
+}
+
+/* ============================================
+   QUICK INFO STATS ROW
+   ============================================ */
+.stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 40px;
+}
+
+.stat-card {
+  background-color: var(--white);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 16px 20px;
+  flex: 1 1 150px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.stat-card .stat-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--text-light);
+  margin-bottom: 6px;
+}
+
+.stat-card .stat-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--saffron-dark);
+}
+
+/* ============================================
+   SECTION TITLE
+   ============================================ */
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: var(--text-dark);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--card-border);
+}
+
+/* ============================================
+   PLACE CARDS
+   ============================================ */
+.place-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 40px;
+}
+
+.place-card {
+  background-color: var(--white);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 22px 26px;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.25s, transform 0.25s;
+}
+
+.place-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+.place-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--saffron-dark);
+  margin-bottom: 10px;
+}
+
+.place-card p {
+  font-size: 0.93rem;
+  color: var(--text-mid);
+  line-height: 1.7;
+}
+
+.place-card .tip {
+  margin-top: 12px;
+  font-size: 0.83rem;
+  color: var(--text-light);
+  font-style: italic;
+  padding-top: 10px;
+  border-top: 1px dashed var(--card-border);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer {
+  background: linear-gradient(135deg, #3d1a00, #7a3800);
+  text-align: center;
+  padding: 28px 20px;
+  color: rgba(255, 248, 232, 0.8);
+  font-size: 0.9rem;
+  font-style: italic;
+  letter-spacing: 0.5px;
+}

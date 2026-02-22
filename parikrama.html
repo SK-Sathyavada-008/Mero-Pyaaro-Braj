@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parikrama Margs – Mero Pyaaro Braj</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================
+       CSS VARIABLES
+       ============================================ */
+    :root {
+      --green:         #2e6b32;
+      --green-dark:    #1b4a1e;
+      --green-light:   #f0faf0;
+      --saffron:       #e07820;
+      --saffron-dark:  #b85e10;
+      --saffron-light: #fff3e0;
+      --cream:         #fdf8f0;
+      --text-dark:     #2c1a0e;
+      --text-mid:      #5a3e28;
+      --text-light:    #9a7a60;
+      --card-border:   #d8ead8;
+      --white:         #ffffff;
+      --shadow:        0 4px 20px rgba(0,0,0,0.08);
+      --shadow-hover:  0 8px 30px rgba(0,0,0,0.14);
+    }
+
+    /* ============================================
+       RESET & BASE
+       ============================================ */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background-color: var(--cream);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* ============================================
+       NAVBAR
+       ============================================ */
+    .navbar {
+      background-color: var(--white);
+      border-bottom: 1px solid var(--card-border);
+      padding: 14px 40px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      color: var(--green);
+      font-weight: 700;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .back-btn:hover { color: var(--green-dark); }
+
+    .navbar-title {
+      color: var(--text-light);
+      font-size: 0.85rem;
+    }
+
+    /* ============================================
+       HERO
+       ============================================ */
+    .hero {
+      background: linear-gradient(160deg, #0e2a10 0%, #2a5e1a 50%, #0e2a10 100%);
+      text-align: center;
+      padding: 70px 24px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    .hero-inner { position: relative; }
+
+    .hero-emoji {
+      font-size: 3rem;
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      color: #f0faf0;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      color: rgba(240,250,240,0.65);
+      font-style: italic;
+    }
+
+    /* ============================================
+       INTRO BOX
+       ============================================ */
+    .intro-box {
+      max-width: 860px;
+      margin: 40px auto 0;
+      padding: 0 24px;
+    }
+
+    .intro-box p {
+      background-color: var(--white);
+      border-left: 4px solid var(--green);
+      border-radius: 10px;
+      padding: 22px 26px;
+      font-size: 1rem;
+      color: var(--text-mid);
+      line-height: 1.8;
+      box-shadow: var(--shadow);
+    }
+
+    /* ============================================
+       SECTION LABEL & HEADING
+       ============================================ */
+    .page-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 40px 24px 60px;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--green);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .section-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--text-dark);
+      margin-bottom: 30px;
+    }
+
+    /* ============================================
+       PARIKRAMA CARDS
+       ============================================ */
+    .parikrama-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .p-card {
+      background-color: var(--white);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: box-shadow 0.25s;
+    }
+
+    .p-card:hover {
+      box-shadow: var(--shadow-hover);
+    }
+
+    /* Green header strip */
+    .p-card-header {
+      background: linear-gradient(135deg, var(--green), #3d8040);
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .p-card-header .icon { font-size: 1.8rem; }
+
+    .p-card-header h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: white;
+      margin-bottom: 2px;
+    }
+
+    .p-card-header .subtitle {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* Card body */
+    .p-card-body {
+      padding: 22px 26px;
+    }
+
+    .p-card-body > p {
+      font-size: 0.93rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+
+    /* Stats row inside card */
+    .p-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .p-stat {
+      background-color: var(--green-light);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      flex: 1 1 130px;
+      text-align: center;
+    }
+
+    .p-stat .p-stat-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-light);
+      margin-bottom: 4px;
+    }
+
+    .p-stat .p-stat-value {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--green-dark);
+    }
+
+    /* Route stops */
+    .route-title {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+    }
+
+    .route-stops {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 20px;
+      padding-left: 4px;
+    }
+
+    .route-stops li {
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      padding-left: 22px;
+      position: relative;
+      line-height: 1.55;
+    }
+
+    .route-stops li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .route-stops li strong {
+      color: var(--saffron-dark);
+    }
+
+    .route-stops li .note {
+      display: block;
+      font-size: 0.78rem;
+      color: var(--text-light);
+      font-style: italic;
+      margin-top: 2px;
+    }
+
+    /* Tips box */
+    .tips-box {
+      background-color: var(--saffron-light);
+      border: 1px solid #f5d9b0;
+      border-radius: 10px;
+      padding: 16px 20px;
+    }
+
+    .tips-box .tips-title {
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: var(--saffron-dark);
+      margin-bottom: 10px;
+    }
+
+    .tips-box ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .tips-box ul li {
+      font-size: 0.85rem;
+      color: var(--text-mid);
+      padding-left: 18px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .tips-box ul li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--saffron);
+      font-weight: 700;
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    footer {
+      background: linear-gradient(135deg, #0e2a10, #2a5e1a);
+      text-align: center;
+      padding: 32px 20px;
+      color: rgba(240, 250, 240, 0.6);
+      font-size: 0.88rem;
+      font-style: italic;
+      letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+
+<body>
+
+    <a href="index.html" class="back-btn">← Home</a>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <h1>Parikrama Margs of Braj</h1>
+      <p>To walk the sacred circumambulation is to walk in the footsteps of all saints who came before</p>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <div class="intro-box">
+    <p>
+      Parikrama (pradakshina) is the devotional act of walking around a sacred site. In Braj, parikrama
+      is not just a ritual — it is a full-body prayer, with each step as an act of worship. The Brajwasis
+      say, <em>"Parikrama karte karte, Giriraj milte hain"</em> — in walking, the divine is found.
+      Here are the five main parikramas of Braj Mandal.
+    </p>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="page-wrap">
+
+    <p class="section-label">Sacred Circumambulations</p>
+    <h2 class="section-heading">The 5 Main Parikramas of Braj</h2>
+
+    <div class="parikrama-list">
+
+      <!-- 1. VRINDAVAN -->
+      <div class="p-card">
+        <div class="p-card-header">
+          <div>
+            <h3>Vrindavan Parikrama</h3>
+            <div class="subtitle">Most popular · Ideal for first-time pilgrims</div>
+          </div>
+        </div>
+        <div class="p-card-body">
+          <p>
+            The Vrindavan Parikrama covers the sacred boundary of Vrindavan town, taking pilgrims past the
+            major ghats, temples, and kunjas (sacred groves). It follows the ancient forest boundary that
+            Krishna himself roamed as a cowherd boy. Many devotees walk it barefoot.
+          </p>
+
+          <div class="p-stats">
+            <div class="p-stat"><div class="p-stat-label">Distance</div><div class="p-stat-value">~10 km</div></div>
+            <div class="p-stat"><div class="p-stat-label">Time Taken</div><div class="p-stat-value">3–5 hours</div></div>
+            <div class="p-stat"><div class="p-stat-label">Difficulty</div><div class="p-stat-value">Easy</div></div>
+            <div class="p-stat"><div class="p-stat-label">Best Day</div><div class="p-stat-value">Ekadashi / Purnima</div></div>
+          </div>
+
+          <div class="route-title">📍 Key Stops Along the Route</div>
+          <ul class="route-stops">
+            <li><strong>Keshi Ghat</strong> — Start here. Yamuna darshan and morning aarti.</li>
+            <li><strong>Madan Mohan Mandir</strong> — Oldest temple, perched on a hillock. <span class="note">Beautiful Yamuna view from the top.</span></li>
+            <li><strong>Kaliya Ghat</strong> — Where Krishna danced on the serpent Kaliya.</li>
+            <li><strong>Govind Dev Ji Mandir</strong> — The grand 1590 temple, largest in Vrindavan.</li>
+            <li><strong>Radha Damodar Mandir</strong> — Sacred site of the Goswami sampradaya.</li>
+            <li><strong>Radha Raman Mandir</strong> — Original unbroken deity worshipped since 1542.</li>
+            <li><strong>Banke Bihari Mandir</strong> — The most beloved temple. The divine gaze.</li>
+            <li><strong>Nidhivan and Seva Kunj</strong> — Sacred groves. Visit before sunset only.</li>
+            <li><strong>Vanshi Vat</strong> — The Kadamba tree where Krishna played his flute.</li>
+            <li><strong>Back to Keshi Ghat</strong> — Complete the circle. Evening aarti on the Yamuna.</li>
+          </ul>
+
+          <div class="tips-box">
+            <div class="tips-title">Tips for the Vrindavan Parikrama</div>
+            <ul>
+              <li>Start at dawn (4–5 AM) for a cool, peaceful walk before the crowds arrive</li>
+              <li>Walk barefoot if you can — the dust of Vrindavan is considered sacred prasad</li>
+              <li>Carry water and light snacks — eat at the dhabas along the route</li>
+              <li>Keep bags closed — monkeys are plentiful all along the path</li>
+              <li>Chant "Radhe Radhe" throughout — this is the tradition here</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. GOVARDHAN -->
+      <div class="p-card">
+        <div class="p-card-header">
+          <div>
+            <h3>Govardhan (Giriraj) Parikrama</h3>
+            <div class="subtitle">Most sacred parikrama in Braj · Done by crores of devotees</div>
+          </div>
+        </div>
+        <div class="p-card-body">
+          <p>
+            The Govardhan Parikrama is the most revered parikrama in all of Braj. To circumambulate Giriraj
+            is to receive his direct blessings — each stone of the hill is a form of Krishna. Lakhs walk it
+            on Govardhan Puja (Annakoot) after Diwali. Some devotees perform it in full dandavat (prostrating
+            with the full body at every single step) — which takes 30–40 days.
+          </p>
+
+          <div class="p-stats">
+            <div class="p-stat"><div class="p-stat-label">Distance</div><div class="p-stat-value">~21 km</div></div>
+            <div class="p-stat"><div class="p-stat-label">Time Taken</div><div class="p-stat-value">5–8 hours</div></div>
+            <div class="p-stat"><div class="p-stat-label">Difficulty</div><div class="p-stat-value">Moderate</div></div>
+            <div class="p-stat"><div class="p-stat-label">Best Day</div><div class="p-stat-value">Govardhan Puja</div></div>
+          </div>
+
+          <div class="route-title">📍 Key Stops Along the Route</div>
+          <ul class="route-stops">
+            <li><strong>Jatipura (Mukharavind)</strong> — The "face" of Giriraj. Most important stop. Start here. <span class="note">Buy fresh flowers and milk from stalls at Jatipura to offer.</span></li>
+            <li><strong>Govinda Kund</strong> — Where Indra bathed Krishna after surrendering to him.</li>
+            <li><strong>Radha Kund and Shyam Kund</strong> — The holiest twin kunds. Pause for darshan.</li>
+            <li><strong>Kusum Sarovar</strong> — Stunning ornamental lake. Rest here. <span class="note">Especially beautiful at sunset.</span></li>
+            <li><strong>Mansi Ganga</strong> — Sacred lake at the heart of Govardhan town.</li>
+            <li><strong>Daan Ghat</strong> — Where Krishna playfully demanded toll from Radha's party.</li>
+            <li><strong>Puchari Ka Lautha</strong> — A footprint of Krishna embedded in the stone. <span class="note">Look carefully — five toes are visible in the rock.</span></li>
+            <li><strong>Back to Jatipura</strong> — Complete the parikrama. Offer final prayers at Mukharavind.</li>
+          </ul>
+
+          <div class="tips-box">
+            <div class="tips-title">Tips for the Govardhan Parikrama</div>
+            <ul>
+              <li>Start very early (3–4 AM) in summer — the afternoon sun is very intense</li>
+              <li>Walk on the natural unpaved path alongside the road, not on the road itself</li>
+              <li>On Govardhan Puja, 5–10 lakh pilgrims walk — arrive very early</li>
+              <li>Never step on any stones or pick anything from the hill itself — only from the ground</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. MATHURA -->
+      <div class="p-card">
+        <div class="p-card-header">
+          <div>
+            <h3>Mathura Parikrama (Saptakoshi)</h3>
+            <div class="subtitle">The 7-Ghat walk of the birthplace city</div>
+          </div>
+        </div>
+        <div class="p-card-body">
+          <p>
+            The Mathura Parikrama circles the ancient city of Mathura along the Yamuna bank and through its
+            sacred neighbourhoods. The route connects the seven most sacred ghats and the Janmabhoomi complex.
+            Best combined with the Vishram Ghat aarti at dawn or dusk.
+          </p>
+
+          <div class="p-stats">
+            <div class="p-stat"><div class="p-stat-label">Distance</div><div class="p-stat-value">~14 km</div></div>
+            <div class="p-stat"><div class="p-stat-label">Time Taken</div><div class="p-stat-value">4–6 hours</div></div>
+            <div class="p-stat"><div class="p-stat-label">Difficulty</div><div class="p-stat-value">Easy</div></div>
+            <div class="p-stat"><div class="p-stat-label">Best Day</div><div class="p-stat-value">Janmashtami / Purnima</div></div>
+          </div>
+
+          <div class="route-title">📍 Key Stops Along the Route</div>
+          <ul class="route-stops">
+            <li><strong>Vishram Ghat</strong> — Start here. Most sacred ghat. Morning aarti on the Yamuna.</li>
+            <li><strong>Krishna Janmabhoomi</strong> — Prison cell darshan. Abhishek at the Garbhagriha.</li>
+            <li><strong>Dwarkadhish Mandir</strong> — Magnificent temple. Shringar darshan.</li>
+            <li><strong>Potara Kund</strong> — Where baby Krishna's clothes were washed.</li>
+            <li><strong>Kans Qila</strong> — Kansa's fort overlooking the Yamuna.</li>
+            <li><strong>All 25 Ghats along the Yamuna</strong> — Walk the sacred riverbank ghat to ghat.</li>
+            <li><strong>Back to Vishram Ghat</strong> — Evening aarti with floating lamps on the river.</li>
+          </ul>
+
+          <div class="tips-box">
+            <div class="tips-title">Tips for the Mathura Parikrama</div>
+            <ul>
+              <li>Combine the parikrama with the evening Yamuna aarti at Vishram Ghat — it's spectacular</li>
+              <li>The 25 ghats walk along the river is the most beautiful part — slow down and take it in</li>
+              <li>A local Brajwasi guide can share the story behind each ghat as you walk</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. BARSANA-NANDGAON -->
+      <div class="p-card">
+        <div class="p-card-header">
+          <div>
+            <h3>Barsana – Nandgaon Parikrama</h3>
+            <div class="subtitle">Radha's hills and Krishna's village — the loving parikrama</div>
+          </div>
+        </div>
+        <div class="p-card-body">
+          <p>
+            This parikrama connects the two hills of Radha's kingdom — circling the Barsana hills and
+            extending to Nandgaon's Nanda Hill. Most meaningful during the Holi season and Radhaashtami.
+            The road between Barsana and Nandgaon is itself sacred — Krishna walked this path daily to meet Radha.
+          </p>
+
+          <div class="p-stats">
+            <div class="p-stat"><div class="p-stat-label">Distance</div><div class="p-stat-value">~22 km combined</div></div>
+            <div class="p-stat"><div class="p-stat-label">Time Taken</div><div class="p-stat-value">5–7 hours</div></div>
+            <div class="p-stat"><div class="p-stat-label">Difficulty</div><div class="p-stat-value">Moderate (hilly)</div></div>
+            <div class="p-stat"><div class="p-stat-label">Best Day</div><div class="p-stat-value">Radhaashtami / Holi</div></div>
+          </div>
+
+          <div class="route-title">📍 Key Stops Along the Route</div>
+          <ul class="route-stops">
+            <li><strong>Radha Rani Temple, Barsana</strong> — Begin with Radha's darshan on the hilltop.</li>
+            <li><strong>Maan Mandir</strong> — Radha's "maan" (loving sulk) temple on the second hill.</li>
+            <li><strong>Vrishabhanu Kund and Pili Pokhar</strong> — Sacred kunds at the base of Barsana's hills.</li>
+            <li><strong>Sanket Van</strong> — The grove where Radha and Krishna would secretly meet. Between the two towns.</li>
+            <li><strong>Nanda Ji Temple, Nandgaon</strong> — Climb Nanda Hill for darshan and the sweeping view.</li>
+            <li><strong>Pavana Sarovar</strong> — Nanda Maharaj's sacred lake. Quiet and contemplative.</li>
+            <li><strong>Uddhava Kyari</strong> — Where Uddhava came with Krishna's message to the gopis.</li>
+            <li><strong>Return to Barsana</strong> — Via the same sacred road Krishna walked.</li>
+          </ul>
+
+          <div class="tips-box">
+            <div class="tips-title">Tips for the Barsana–Nandgaon Parikrama</div>
+            <ul>
+              <li>During Lathmar Holi, book accommodation 3–6 months in advance</li>
+              <li>The Barsana hill has 200+ steps — manageable, but go slowly</li>
+              <li>The 8 km between Barsana and Nandgaon can also be done by auto-rickshaw</li>
+              <li>Don't skip Sanket Van — a peaceful, lesser-known grove between the two towns</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. CHAURASI KOS -->
+      <div class="p-card">
+        <div class="p-card-header">
+          <div>
+            <h3>Braj Chaurasi Kos Parikrama</h3>
+            <div class="subtitle">The grand pilgrimage · 84 Kos · The ultimate Braj Yatra</div>
+          </div>
+        </div>
+        <div class="p-card-body">
+          <p>
+            The Chaurasi Kos Parikrama is the most complete and sacred pilgrimage in all of Braj — covering
+            the entire Braj Mandal over approximately 268 km (84 kos). It takes 30–40 days on foot, passing
+            through all major sacred sites across Mathura, Vrindavan, Govardhan, Barsana, Nandgaon, Gokul,
+            and dozens of other groves and temples. It is considered the supreme devotional act in Vaishnava
+            tradition.
+          </p>
+
+          <div class="p-stats">
+            <div class="p-stat"><div class="p-stat-label">Total Distance</div><div class="p-stat-value">~268 km</div></div>
+            <div class="p-stat"><div class="p-stat-label">Duration on Foot</div><div class="p-stat-value">30–40 days</div></div>
+            <div class="p-stat"><div class="p-stat-label">Difficulty</div><div class="p-stat-value">Very Intensive</div></div>
+            <div class="p-stat"><div class="p-stat-label">Best Season</div><div class="p-stat-value">Kartik Month</div></div>
+          </div>
+
+          <div class="route-title">Major Stops on the Chaurasi Kos Parikrama</div>
+          <ul class="route-stops">
+            <li><strong>Mathura</strong> — Begin at Vishram Ghat. Janmabhoomi. The sacred origin.</li>
+            <li><strong>Vrindavan</strong> — All major temples, kunjas, and Yamuna ghats.</li>
+            <li><strong>Madhuvana, Talvana, Kumudvana, Bahulavan</strong> — The 12 sacred forests of Braj. <span class="note">Each forest has its own leela and history.</span></li>
+            <li><strong>Radha Kund and Govardhan</strong> — Full Govardhan parikrama done here.</li>
+            <li><strong>Barsana and Nandgaon</strong> — Radha Rani and Nanda Ji temples.</li>
+            <li><strong>Sanket Van and Kamavana</strong> — Secret meeting forest and the forest of desires.</li>
+            <li><strong>Kokilavana</strong> — Where Krishna took the form of a cuckoo to win Radha's forgiveness.</li>
+            <li><strong>Gokul and Raman Reti</strong> — Baby Krishna's village and the sacred playing sands.</li>
+            <li><strong>Mahavana</strong> — Ancient village with the Brahma leela site.</li>
+            <li><strong>Back to Mathura Vishram Ghat</strong> — Completion and the final aarti.</li>
+          </ul>
+
+          <div class="tips-box">
+            <div class="tips-title">Tips for the Chaurasi Kos Parikrama</div>
+            <ul>
+              <li>The best time is Kartik month (Oct–Nov) — food camps and shelter are set up along the route</li>
+              <li>Join an organised yatra group — they handle route guidance, food, and tents</li>
+              <li>Bring a walking stick, simple cotton clothes, and a light jhola bag</li>
+              <li>Start and end each day with kirtan — the parikrama is as spiritual as it is physical</li>
+              <li>Even completing a portion of the Chaurasi Kos is considered very meritorious</li>
+              <li>A vehicle-based version is done by elderly pilgrims — this is also considered valid and blessed</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

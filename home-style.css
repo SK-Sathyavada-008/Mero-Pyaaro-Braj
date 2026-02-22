@@ -1,0 +1,428 @@
+/* ============================================
+       CSS VARIABLES — edit colours here easily
+       ============================================ */
+    :root {
+      --saffron:       #e07820;
+      --saffron-dark:  #b85e10;
+      --saffron-light: #fff3e0;
+      --cream:         #fdf8f0;
+      --text-dark:     #2c1a0e;
+      --text-mid:      #5a3e28;
+      --text-light:    #9a7a60;
+      --card-border:   #f0dfc8;
+      --white:         #ffffff;
+      --green:         #2e6b32;
+      --green-dark:    #1b4a1e;
+      --shadow:        0 4px 20px rgba(0,0,0,0.08);
+      --shadow-hover:  0 8px 30px rgba(0,0,0,0.14);
+    }
+
+    /* ============================================
+       RESET & BASE
+       ============================================ */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background-color: var(--cream);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* ============================================
+       HERO SECTION
+       ============================================ */
+    .hero {
+      background: linear-gradient(160deg, #2c0f00 0%, #6b2f00 45%, #2c1400 100%);
+      text-align: center;
+      padding: 80px 24px 70px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle dot texture — pure CSS */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.055) 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+
+    /* Warm glow at the bottom of hero */
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 120px;
+      background: radial-gradient(ellipse, rgba(224,120,32,0.3), transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative; /* sits above ::before */
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255, 248, 232, 0.75);
+      font-size: 0.78rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 40px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+      color: #fff8e8;
+      letter-spacing: 3px;
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: rgba(255, 248, 232, 0.65);
+      font-style: italic;
+      margin-bottom: 50px;
+    }
+
+    /* ============================================
+       MAIN CTA BUTTON
+       ============================================ */
+    .main-cta-wrap {
+      margin-bottom: 24px;
+    }
+
+    .main-cta {
+      display: inline-block;
+      text-decoration: none;
+      background: linear-gradient(135deg, var(--saffron), var(--saffron-dark));
+      color: white;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: 1.5px;
+      padding: 18px 50px;
+      border-radius: 50px;
+      box-shadow: 0 6px 24px rgba(224,120,32,0.45);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .main-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 32px rgba(224,120,32,0.55);
+    }
+
+    .main-cta-label {
+      display: block;
+      color: rgba(255,248,232,0.45);
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      margin-top: 12px;
+    }
+
+    /* ============================================
+       PLACE BUTTONS SECTION
+       ============================================ */
+    .places-section {
+      background-color: var(--white);
+      padding: 60px 24px;
+      text-align: center;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--saffron);
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .section-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .section-sub {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      margin-bottom: 36px;
+      font-style: italic;
+    }
+
+    .places-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+      max-width: 680px;
+      margin: 0 auto 36px;
+    }
+
+    .place-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--text-dark);
+      background-color: var(--cream);
+      border: 1.5px solid var(--card-border);
+      padding: 13px 24px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      transition: all 0.22s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .place-btn:hover {
+      background-color: var(--saffron);
+      border-color: var(--saffron);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(224,120,32,0.3);
+    }
+
+    .parikrama-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      background-color: var(--green);
+      color: white;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 15px 36px;
+      border-radius: 10px;
+      box-shadow: 0 4px 16px rgba(46,107,50,0.3);
+      transition: all 0.22s;
+    }
+
+    .parikrama-btn:hover {
+      background-color: var(--green-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(46,107,50,0.4);
+    }
+
+    /* ============================================
+       DIVIDER
+       ============================================ */
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--card-border), transparent);
+      margin: 0 40px;
+    }
+
+    /* ============================================
+       DOS AND DONTS
+       ============================================ */
+    .dos-donts-section {
+      padding: 60px 24px;
+      background-color: var(--cream);
+    }
+
+    .dos-donts-section .inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .dos-donts-grid {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .dd-box {
+      flex: 1 1 360px;
+      background-color: var(--white);
+      border-radius: 14px;
+      padding: 28px 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .dd-box.dos { border-top: 4px solid var(--green); }
+    .dd-box.donts { border-top: 4px solid #c0392b; }
+
+    .dd-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    .dd-box.dos h3 { color: var(--green); }
+    .dd-box.donts h3 { color: #c0392b; }
+
+    .dd-box ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .dd-box ul li {
+      font-size: 0.91rem;
+      color: var(--text-mid);
+      line-height: 1.55;
+      padding-left: 26px;
+      position: relative;
+    }
+
+    .dd-box.dos ul li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .dd-box.donts ul li::before {
+      content: "✕";
+      position: absolute;
+      left: 0;
+      color: #c0392b;
+      font-weight: 700;
+    }
+
+    /* ============================================
+       FESTIVALS
+       ============================================ */
+    .festivals-section {
+      padding: 60px 24px;
+      background-color: var(--white);
+    }
+
+    .festivals-section .inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .festivals-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 18px;
+    }
+
+    .festival-card {
+      background-color: var(--cream);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 22px 18px;
+      text-align: center;
+      transition: box-shadow 0.22s, transform 0.22s;
+    }
+
+    .festival-card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-3px);
+    }
+
+    .festival-card .fest-icon {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .festival-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.97rem;
+      color: var(--saffron-dark);
+      margin-bottom: 5px;
+    }
+
+    .festival-card .fest-date {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+
+    .festival-card p {
+      font-size: 0.83rem;
+      color: var(--text-mid);
+      line-height: 1.55;
+    }
+
+    /* ============================================
+       FAQ SECTION
+       ============================================ */
+  .faq-section {
+      padding: 60px 24px;
+      background-color: var(--cream);
+    }
+
+    .faq-section .inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    /* The numbered list */
+    .faq-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      counter-reset: faq-counter;
+    }
+
+    .faq-list li {
+      background-color: var(--white);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 22px 26px 22px 70px;
+      position: relative;
+      box-shadow: var(--shadow);
+    }
+
+    /* The big number on the left */
+    .faq-list li::before {
+      counter-increment: faq-counter;
+      content: counter(faq-counter);
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--saffron);
+      line-height: 1;
+    }
+
+    .faq-list li h4 {
+      font-size: 0.97rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .faq-list li p {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    footer {
+      background: linear-gradient(135deg, #2c0f00, #5a2800);
+      text-align: center;
+      padding: 32px 20px;
+      color: rgba(255, 248, 232, 0.6);
+      font-size: 0.88rem;
+      font-style: italic;
+      letter-spacing: 0.5px;
+    }
