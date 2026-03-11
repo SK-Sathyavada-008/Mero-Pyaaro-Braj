@@ -203,11 +203,36 @@
     </div>
   </section>
 
+  <div class="comment-section">
+    <h3>Radhe Radhe – Leave a Message</h3>
+    <input type="text" id="nameInput" placeholder="Your name">
+    <textarea id="commentInput" placeholder="Write your comment..."></textarea>
+    <button onclick="addComment()">Post</button>
+    <div id="commentList"></div>
+  </div>
+  <br><br>
   <!-- ============ FOOTER ============ -->
   <footer>
     🌸Radhe Radhe🌸 
   </footer>
   <p style="font-size: 5px; text-align: right;">With Love<br> -Krishnaya</p>
 
+<script>
+    function addComment(){
+    let name = document.getElementById("nameInput").value.trim();
+    let comment = document.getElementById("commentInput").value.trim();
+    if(name === "" || comment === ""){
+        alert("Please fill both fields");
+        return;
+    }
+    let commentBox = document.createElement("div");
+    commentBox.classList.add("comment");
+    commentBox.innerHTML = "<strong>" + name + "</strong><p>" + comment + "</p>";
+    document.getElementById("commentList").prepend(commentBox);
+    document.getElementById("nameInput").value = "";
+    document.getElementById("commentInput").value = "";
+  }
+  </script>
+  
 </body>
 </html>
